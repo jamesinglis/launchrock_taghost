@@ -8,7 +8,7 @@
  * This file is part of Launchrock TagHost.
  * 
  * @package launchrock_taghost
- * @version 0.1
+ * @version 0.2
  * @author James Inglis <hello@jamesinglis.no>
  * @copyright (c) 2015, James Inglis
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)

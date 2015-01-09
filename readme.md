@@ -13,9 +13,10 @@ This is a very simple PHP application designed to make deployment of Launchrock 
   - Inclusion of standard tag container
   - Support for custom data layer global variable
   - Firing of a configurable custom event upon submit (to create a *Rule* in GTM to trigger other tags)
+  - Firing of a configurable custom event upon email share (to create a *Rule* in GTM to trigger other tags)
 - Google Analytics
   - Choice of Classic Analytics or Universal Analytics
-  - Optional firing of a configurable event
+  - Optional firing of a configurable event upon submit
 - Google AdWords
   - Both conversion and remarketing tags
   - Remarketing triggers on page load, conversion triggers on submit
@@ -49,5 +50,9 @@ This is a very simple PHP application designed to make deployment of Launchrock 
 - Feedback welcome!
 
 ##Changelog
+Version 0.2 (2015-01-09)
+- Changes (minimises) the code required for addition to Launchrock
+- Adds dataLayer event for email share (Google Tag Manager only)
+
 Version 0.1 (2015-01-02)
 - Initial release
