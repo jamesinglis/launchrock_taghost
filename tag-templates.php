@@ -23,11 +23,52 @@
  * - %%TAG_AMOUNT%% - Used in Google AdWords Conversions and Facebook Ads Conversions
  */
 
-$tag_template['launchrock'] = <<<EOD
+$tag_template['launchrock']['widget'] = <<<EOD
 <!-- Begin LaunchRock Widget -->
 <div id="lr-widget" rel="%%TAG_ID%%"></div>
 <script type="text/javascript" src="//ignition.launchrock.com/ignition-current.min.js"></script>
 <!-- End LaunchRock Widget -->
+        
+EOD;
+
+
+$tag_template['launchrock']['submit'] = <<<EOD
+<script type="text/javascript">
+    function launchrockTagHost(){
+        jQuery('body')
+            .on('click', '.LR-sign-up-submit', function () {
+                if (typeof launchrockTagSubmit === 'function') { 
+                  launchrockTagSubmit();
+                }
+            })
+            .on('click', '.LR-share-email-send', function () {
+                if (typeof launchrockTagEmailShare === 'function') { 
+                  launchrockTagEmailShare();
+                }
+            });    
+    }
+        
+    function launchrockTagSubmit(){
+        if(typeof(window['_control'].gtm) !== 'undefined' && window['_control'].gtm === true){
+            window[window['_control'].gtm_datalayer].push({'event':window['_control'].gtm_event_success});
+        }
+        if(typeof(window['_control'].ga_event) !== 'undefined' && window['_control'].ga_event === true){
+            window.gaEventExecute();
+        }
+        if(typeof(window['_control'].adwords_conversion) !== 'undefined' && window['_control'].adwords_conversion === true){
+            window.adwordsConversion();
+        }
+        if(typeof(window['_control'].facebook_conversion) !== 'undefined' && window['_control'].facebook_conversion === true){
+            window.facebookConversion();
+        }
+    }
+        
+    function launchrockTagEmailShare(){
+        if(typeof(window['_control'].gtm) !== 'undefined' && window['_control'].gtm === true){
+            window[window['_control'].gtm_datalayer].push({'event':window['_control'].gtm_event_email_share});
+        }
+    }
+</script>
         
 EOD;
 

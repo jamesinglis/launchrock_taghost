@@ -36,7 +36,8 @@ $config['page']['color']                      = '#000000';
 $config['gtm']['enabled']                     = false;
 $config['gtm']['container']                   = '';
 $config['gtm']['datalayer']                   = 'dataLayer'; // Name for the datalayer, just in case it needs to be changed
-$config['gtm']['event']                       = 'expression-of-interest-success'; // This event is triggered in the dataLayer when the form is submitted.
+$config['gtm']['submit']['event']             = 'expression-of-interest-success'; // This event is triggered in the dataLayer when the form is submitted.
+$config['gtm']['email']['event']              = 'expression-of-interest-email-share'; // This event is triggered in the dataLayer when the email share form is submitted
 
 /**
  * Google Analytics configuration

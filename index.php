@@ -32,15 +32,16 @@ require_once 'functions.php';
             }  
         </style>
 
-<?= ga_output(); ?>
-<?= ga_event_output(); ?>
+        <?= ga_output(); ?>
+        <?= ga_event_output(); ?>
 
         <script type="text/javascript">
-        <?= get_config("gtm_datalayer"); ?> = (typeof <?= get_config("gtm_datalayer"); ?> !== 'undefined') ? <?= get_config("gtm_datalayer"); ?> : [];
+            <?= get_config("gtm_datalayer"); ?> = (typeof <?= get_config("gtm_datalayer"); ?> !== 'undefined') ? <?= get_config("gtm_datalayer"); ?> : [];
             var _control = {
                 gtm: <?= get_config("gtm_enabled") === true ? 'true' : 'false'; ?>,
                 gtm_datalayer: '<?= get_config("gtm_datalayer"); ?>',
-                gtm_event_success: '<?= get_config("gtm_event"); ?>',
+                gtm_event_success: '<?= get_config("gtm_submit_event"); ?>',
+                gtm_event_email_share: '<?= get_config("gtm_email_event"); ?>',
                 ga: <?= get_config("ga_enabled") === true ? 'true' : 'false'; ?>,
                 ga_type: '<?= get_config("ga_type"); ?>',
                 ga_event: <?= get_config("ga_event_enabled") === true ? 'true' : 'false'; ?>,
