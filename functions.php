@@ -67,7 +67,7 @@ function get_config($key)
  * @param string $key
  * @return mixed
  */
-function get_template($key)
+function get_tag_template($key)
 {
     return get_value('template', $key);
 }
@@ -90,7 +90,7 @@ function launchrock_validate($launchrock_id)
 function launchrock_output()
 {
     $tag_id = get_config('launchrock_id');
-    $template = get_template('launchrock');
+    $template = get_tag_template('launchrock_widget');
 
     if (launchrock_validate($tag_id)) {
         return str_replace('%%TAG_ID%%', $tag_id, $template);
@@ -116,7 +116,7 @@ function gtm_output()
 {
     $enabled = get_config('gtm_enabled');
     $tag_id = get_config('gtm_container');
-    $template = get_template('gtm');
+    $template = get_tag_template('gtm');
 
     if ($enabled && gtm_validate($tag_id)) {
         return str_replace('%%TAG_ID%%', $tag_id, $template);
@@ -146,13 +146,13 @@ function ga_output()
     $tag_id = get_config('ga_id');
     switch (get_config('ga_type')) {
         case 'analytics':
-            $template = get_template('ga_analytics');
+            $template = get_tag_template('ga_analytics');
             break;
         case 'ga':
-            $template = get_template('ga_ga');
+            $template = get_tag_template('ga_ga');
             break;
         default:
-            $template = get_template('ga_ga');
+            $template = get_tag_template('ga_ga');
     }
 
     if ($enabled && gtm_validate($tag_id)) {
@@ -178,13 +178,13 @@ function ga_event_output(){
     
     switch (get_config('ga_type')) {
         case 'analytics':
-            $template = get_template('ga_event_analytics');
+            $template = get_tag_template('ga_event_analytics');
             break;
         case 'ga':
-            $template = get_template('ga_event_ga');
+            $template = get_tag_template('ga_event_ga');
             break;
         default:
-            $template = get_template('ga_event_ga');
+            $template = get_tag_template('ga_event_ga');
     }
 
     if ($enabled && $event_enabled) {
@@ -223,12 +223,12 @@ function fb_output($type)
                 get_config('facebook_conversion_currency'),
                 get_config('facebook_conversion_amount')
             );
-            $template = get_template('facebook_conversion');
+            $template = get_tag_template('facebook_conversion');
             break;
         case 'remarketing':
             $enabled = get_config('facebook_remarketing_enabled');
             $tag_id = get_config('facebook_remarketing_pixelid');
-            $template = get_template('facebook_remarketing');
+            $template = get_tag_template('facebook_remarketing');
             break;
     }
 
@@ -271,12 +271,12 @@ function adwords_output($type)
                 get_config('adwords_conversion_currency'),
                 get_config('adwords_conversion_amount')
             );
-            $template = get_template('adwords_conversion');
+            $template = get_tag_template('adwords_conversion');
             break;
         case 'remarketing':
             $enabled = get_config('adwords_remarketing_enabled');
             $tag_id = get_config('adwords_remarketing_id');
-            $template = get_template('adwords_remarketing');
+            $template = get_tag_template('adwords_remarketing');
             break;
     }
 
