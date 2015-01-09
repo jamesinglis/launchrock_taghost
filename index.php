@@ -51,11 +51,12 @@ require_once 'functions.php';
         </script>
     </head>
     <body>
-<?= gtm_output(); ?>
-<?= launchrock_output(); ?>
+        <?= gtm_output(); ?>
+        <?= launchrock_output(); ?>
         <?= adwords_output('conversion'); ?>
         <?= adwords_output('remarketing'); ?>
         <?= fb_output('conversion'); ?>
         <?= fb_output('remarketing'); ?>
+        <?= launchrock_submit(); ?>
     </body>
 </html>

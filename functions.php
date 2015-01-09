@@ -288,3 +288,11 @@ function adwords_output($type)
         return '';
     }
 }
+
+/**
+ * Returns Javascript functions to be triggered by Launchrock
+ * @return string
+ */
+function launchrock_submit(){
+    return get_tag_template('launchrock_submit');   
+}
