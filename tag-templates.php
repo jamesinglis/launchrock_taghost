@@ -34,38 +34,50 @@ EOD;
 
 $tag_template['launchrock']['submit'] = <<<EOD
 <script type="text/javascript">
-    function launchrockTagHost(){
+    function launchrockTagHost() {
+        // Adds click handlers to the Launchrock elements
         jQuery('body')
-            .on('click', '.LR-sign-up-submit', function () {
-                if (typeof launchrockTagSubmit === 'function') { 
-                  launchrockTagSubmit();
+                .on('click', '.LR-sign-up-submit', function () {
+                    if (typeof launchrockTagSubmit === 'function') {
+                        launchrockTagSubmit();
+                    }
+                })
+                .on('click', '.LR-share-email-send', function () {
+                    if (typeof launchrockTagEmailShare === 'function') {
+                        launchrockTagEmailShare();
+                    }
+                });
+
+        // If enabled, detects relative URIs from Launchrock (which will fail!) and converts them to absolute
+        if (typeof (window['_control'].fix_widget_styles) !== 'undefined' && window['_control'].fix_widget_styles === true) {
+            jQuery('link[rel=stylesheet]').each(function (index, element) {
+                var relativeURIRegEx = /^\/themes\//;
+                var existingHref = jQuery(this).attr('href');
+                if (relativeURIRegEx.test(existingHref)) {
+                    jQuery(this).attr('href', '//ignition.launchrock.com' + existingHref);
                 }
-            })
-            .on('click', '.LR-share-email-send', function () {
-                if (typeof launchrockTagEmailShare === 'function') { 
-                  launchrockTagEmailShare();
-                }
-            });    
-    }
-        
-    function launchrockTagSubmit(){
-        if(typeof(window['_control'].gtm) !== 'undefined' && window['_control'].gtm === true){
-            window[window['_control'].gtm_datalayer].push({'event':window['_control'].gtm_event_success});
+            });
         }
-        if(typeof(window['_control'].ga_event) !== 'undefined' && window['_control'].ga_event === true){
+    }
+
+    function launchrockTagSubmit() {
+        if (typeof (window['_control'].gtm) !== 'undefined' && window['_control'].gtm === true) {
+            window[window['_control'].gtm_datalayer].push({'event': window['_control'].gtm_event_success});
+        }
+        if (typeof (window['_control'].ga_event) !== 'undefined' && window['_control'].ga_event === true) {
             window.gaEventExecute();
         }
-        if(typeof(window['_control'].adwords_conversion) !== 'undefined' && window['_control'].adwords_conversion === true){
+        if (typeof (window['_control'].adwords_conversion) !== 'undefined' && window['_control'].adwords_conversion === true) {
             window.adwordsConversion();
         }
-        if(typeof(window['_control'].facebook_conversion) !== 'undefined' && window['_control'].facebook_conversion === true){
+        if (typeof (window['_control'].facebook_conversion) !== 'undefined' && window['_control'].facebook_conversion === true) {
             window.facebookConversion();
         }
     }
-        
-    function launchrockTagEmailShare(){
-        if(typeof(window['_control'].gtm) !== 'undefined' && window['_control'].gtm === true){
-            window[window['_control'].gtm_datalayer].push({'event':window['_control'].gtm_event_email_share});
+
+    function launchrockTagEmailShare() {
+        if (typeof (window['_control'].gtm) !== 'undefined' && window['_control'].gtm === true) {
+            window[window['_control'].gtm_datalayer].push({'event': window['_control'].gtm_event_email_share});
         }
     }
 </script>

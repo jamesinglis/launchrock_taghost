@@ -15,12 +15,14 @@
  */
 
 $config['launchrock']['id']                   = ''; // ID for the Launchrock widget
+$config['launchrock']['fixwidgetstyles']      = false; // Enable this if the core stylesheet is displaying as a relative URI
 
 /**
  * Base page configuration
  * 
  * Most of these values will be copied from Launchrock itself
  */
+$config['page']['url']                        = ''; // URL is only used in the Open Graph Tags
 $config['page']['title']                      = ''; // Title is used in multiple places
 $config['page']['description']                = ''; // This description is only used in the Open Graph tags
 $config['page']['image']                      = ''; // This image is only used in the Open Graph tags

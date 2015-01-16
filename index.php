@@ -22,7 +22,7 @@ require_once 'functions.php';
         <meta property="og:type" content="company" />
         <meta property="og:site_name" content="<?= get_config("page_title"); ?>" />
         <meta property="og:description" content="<?= get_config("page_description"); ?>" />
-        <meta property="og:url" content="" />
+        <meta property="og:url" content="<?= get_config("page_url"); ?>" />
         <meta property="og:image" content="<?= get_config("page_image"); ?>" />
 
         <style type="text/css">
@@ -46,7 +46,8 @@ require_once 'functions.php';
                 ga_type: '<?= get_config("ga_type"); ?>',
                 ga_event: <?= get_config("ga_event_enabled") === true ? 'true' : 'false'; ?>,
                 adwords_conversion: <?= get_config("adwords_conversion_enabled") === true ? 'true' : 'false'; ?>,
-                facebook_conversion: <?= get_config("facebook_conversion_enabled") === true ? 'true' : 'false'; ?>
+                facebook_conversion: <?= get_config("facebook_conversion_enabled") === true ? 'true' : 'false'; ?>,
+                fix_widget_styles: <?= get_config("launchrock_fixwidgetstyles") === true ? 'true' : 'false'; ?>
             };
         </script>
     </head>
