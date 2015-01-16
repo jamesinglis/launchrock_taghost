@@ -27,6 +27,7 @@ This is a very simple PHP application designed to make deployment of Launchrock 
 ###Other Features
 - Change color and background color of base page from config, to avoid ugly splash of color while loading the Launchrock widget.
 - Change title and meta tags for use in Open Graph tags (as recommendeded in the *Domain* section of the Launchrock page editor)
+- Compensates for Launchrock bug that sometimes loads Launchrock theme CSS as a relative link rather than absolute
 
 ##Installation
 1. Set up your Launchrock landing page as a *widget* rather than a *page*. 
@@ -41,15 +42,21 @@ This is a very simple PHP application designed to make deployment of Launchrock 
   - This code is intended to completed replace what is there already. This will *erase* any existing customizations.
 10. Click *Apply Changes* and then *Launch Widget*.
   - From experience, it takes about 5-10 minutes for changes to go live.
+11. If the Launchrock theme CSS doesn't seem to be loading (i.e. the widget looks nothing like it does in the editor!), set the "fixwidgetstyles" config property to "true".
+  - This is a known bug in January 2015 that happens when a Launchrock project is changed from a page to an embeddable widget.
 
 ##Tech Notes
 - Tested using PHP 5.4.14
-- The only reliance on jQuery is in the code added to Launchrock.
+- Minimised reliance on jQuery as much as possible. Current version being included by Launchrock (2015-01-02) is jQuery 1.8.
 - Tag Templates sourced directly from respective platform documentation on 2015-01-02.
 - If you want to configure multiple conversion tags for AdWords of Facebook Ads, you will need to do this using a Google Tag Manager implementation.
 - Feedback welcome!
 
 ##Changelog
+Version 0.3 (2015-01-16)
+- Adds Open Graph URL property (not currently added by Launchrock's recommended tags for widgets)
+- Option to convert relative URIs in stylesheets to absolute URIs (to overcome known bug in some projects)
+
 Version 0.2 (2015-01-09)
 - Changes (minimises) the code required for addition to Launchrock
 - Adds dataLayer event for email share (Google Tag Manager only)

@@ -1,11 +1,12 @@
 <?php
+
 /**
  * TagHost main page
  * 
  * This file is part of Launchrock TagHost.
  * 
  * @package launchrock_taghost
- * @version 0.2
+ * @version 0.3
  * @author James Inglis <hello@jamesinglis.no>
  * @copyright (c) 2015, James Inglis
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
@@ -13,6 +14,7 @@
 require_once 'config.php';
 require_once 'tag-templates.php';
 require_once 'functions.php';
+
 ?>
 <!DOCTYPE html>
 <html>
