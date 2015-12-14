@@ -2,15 +2,17 @@
 
 /**
  * Functions
- * 
+ *
  * This file is part of Launchrock TagHost.
- * 
+ *
  * @package launchrock_taghost
- * @version 0.3
+ * @version 0.4
  * @author James Inglis <hello@jamesinglis.no>
  * @copyright (c) 2015, James Inglis
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
+
+require 'vendor/NonceUtil-PHP/NonceUtil.php';
 
 /**
  * Get a value from a multidimensional array
@@ -167,7 +169,8 @@ function ga_output()
  * @param string $type Type of tag: 'conversion' or 'remarketing
  * @return string
  */
-function ga_event_output(){
+function ga_event_output()
+{
     $enabled = get_config('ga_enabled');
     $event_enabled = get_config('ga_event_enabled');
     $settings = array(
@@ -175,7 +178,7 @@ function ga_event_output(){
         get_config('ga_event_action'),
         get_config('ga_event_label'),
     );
-    
+
     switch (get_config('ga_type')) {
         case 'analytics':
             $template = get_tag_template('ga_event_analytics');
@@ -290,9 +293,21 @@ function adwords_output($type)
 }
 
 /**
+ * Returns the Javascript for logging form activity by AJAX
+ * @return string
+ */
+function logging_output()
+{
+    if (get_config('logging_enabled')) {
+        return get_tag_template('logging');
+    }
+}
+
+/**
  * Returns Javascript functions to be triggered by Launchrock
  * @return string
  */
-function launchrock_submit(){
-    return get_tag_template('launchrock_submit');   
+function launchrock_submit()
+{
+    return get_tag_template('launchrock_submit');
 }
