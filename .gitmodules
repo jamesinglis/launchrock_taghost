@@ -1,0 +1,4 @@
+[submodule "vendor/NonceUtil-PHP"]
+	path = vendor/NonceUtil-PHP
+	url = https://github.com/timostamm/NonceUtil-PHP.git
+	branch = master
