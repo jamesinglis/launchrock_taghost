@@ -28,6 +28,7 @@ This is a very simple PHP application designed to make deployment of Launchrock 
 - Change color and background color of base page from config, to avoid ugly splash of color while loading the Launchrock widget.
 - Change title and meta tags for use in Open Graph tags (as recommendeded in the *Domain* section of the Launchrock page editor)
 - Compensates for Launchrock bug that sometimes loads Launchrock theme CSS as a relative link rather than absolute
+- Can log email addresses and IP addresses to log file for troubleshooting data flow
 
 ##Installation
 1. Set up your Launchrock landing page as a *widget* rather than a *page*. 
@@ -50,9 +51,15 @@ This is a very simple PHP application designed to make deployment of Launchrock 
 - Minimised reliance on jQuery as much as possible. Current version being included by Launchrock (2015-01-02) is jQuery 1.8.
 - Tag Templates sourced directly from respective platform documentation on 2015-01-02.
 - If you want to configure multiple conversion tags for AdWords of Facebook Ads, you will need to do this using a Google Tag Manager implementation.
+- Activity logging captures timestamp, email address, conversion/sharing. This file is protected by the .htaccess file on Apache servers but if you're using something else, make sure you lock down access to it.
+- Activity logging AJAX is protected by a simple nonce with a 30 minute validity
 - Feedback welcome!
 
 ##Changelog
+Version 0.4 (2015-12-14)
+- Adds activity logging option
+- Protects sensitive files with .htaccess file
+
 Version 0.3 (2015-01-16)
 - Adds Open Graph URL property (not currently added by Launchrock's recommended tags for widgets)
 - Option to convert relative URIs in stylesheets to absolute URIs (to overcome known bug in some projects)
