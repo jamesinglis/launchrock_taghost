@@ -1,0 +1,14 @@
+<Files ".htaccess">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+<Files "config.php">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+<Files "activity.log">
+    Order Deny,Allow
+    Deny from all
+</Files>
