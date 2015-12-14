@@ -2,9 +2,9 @@
 
 /**
  * Tag Templates
- * 
+ *
  * This file is part of Launchrock TagHost.
- * 
+ *
  * @package launchrock_taghost
  * @version 0.3
  * @author James Inglis <hello@jamesinglis.no>
@@ -73,11 +73,17 @@ $tag_template['launchrock']['submit'] = <<<EOD
         if (typeof (window['_control'].facebook_conversion) !== 'undefined' && window['_control'].facebook_conversion === true) {
             window.facebookConversion();
         }
+        if (typeof (window['_control'].logging) !== 'undefined' && window['_control'].logging === true) {
+            window.logConversion();
+        }
     }
 
     function launchrockTagEmailShare() {
         if (typeof (window['_control'].gtm) !== 'undefined' && window['_control'].gtm === true) {
             window[window['_control'].gtm_datalayer].push({'event': window['_control'].gtm_event_email_share});
+        }
+        if (typeof (window['_control'].logging) !== 'undefined' && window['_control'].logging === true) {
+            window.logSharing();
         }
     }
 </script>
@@ -214,4 +220,40 @@ window._fbq = window._fbq || [];
 window._fbq.push(['track', 'PixelInitialized', {}]);
 </script>
 <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=%%TAG_ID%%&amp;ev=PixelInitialized" /></noscript>
+EOD;
+
+
+$tag_template['logging'] = <<<EOD
+<!-- Facebook Conversion Code -->
+<script type="text/javascript">
+    var urlVars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+    function(m,key,value) {
+        urlVars[key] = value;
+    });
+
+    window['_control'].ref = '';
+
+    if(typeof (urlVars['lrRef']) !== 'undefined'){
+        window['_control'].ref = urlVars['lrRef'];
+    }
+
+    function logConversion() {
+        window['_control'].email = jQuery('.LR-sign-up-input.signup-email').val();
+        jQuery.ajax({
+            url: "activity.php",
+            type: "POST",
+            data: { email: window['_control'].email, status: 'Conversion', ref: window['_control'].ref, nonce: window['_control'].nonce }
+        });
+    };
+
+    function logSharing() {
+        jQuery.ajax({
+            url: "activity.php",
+            type: "POST",
+            data: { email: window['_control'].email, status: 'Share', ref: window['_control'].ref, nonce: window['_control'].nonce }
+        });
+    }
+</script>
+
 EOD;

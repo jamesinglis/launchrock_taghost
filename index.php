@@ -2,9 +2,9 @@
 
 /**
  * TagHost main page
- * 
+ *
  * This file is part of Launchrock TagHost.
- * 
+ *
  * @package launchrock_taghost
  * @version 0.3
  * @author James Inglis <hello@jamesinglis.no>
@@ -31,7 +31,7 @@ require_once 'functions.php';
             body {
                 background-color: <?= get_config("page_bgcolor"); ?>;
                 color: <?= get_config("page_color"); ?>;
-            }  
+            }
         </style>
 
         <?= ga_output(); ?>
@@ -49,7 +49,9 @@ require_once 'functions.php';
                 ga_event: <?= get_config("ga_event_enabled") === true ? 'true' : 'false'; ?>,
                 adwords_conversion: <?= get_config("adwords_conversion_enabled") === true ? 'true' : 'false'; ?>,
                 facebook_conversion: <?= get_config("facebook_conversion_enabled") === true ? 'true' : 'false'; ?>,
-                fix_widget_styles: <?= get_config("launchrock_fixwidgetstyles") === true ? 'true' : 'false'; ?>
+                fix_widget_styles: <?= get_config("launchrock_fixwidgetstyles") === true ? 'true' : 'false'; ?>,
+                logging: <?= get_config("logging_enabled") === true ? 'true' : 'false'; ?>,
+                nonce: '<?= NonceUtil::generate(get_config("logging_nonce"), 1800); ?>',
             };
         </script>
     </head>
@@ -60,6 +62,7 @@ require_once 'functions.php';
         <?= adwords_output('remarketing'); ?>
         <?= fb_output('conversion'); ?>
         <?= fb_output('remarketing'); ?>
+        <?= logging_output(); ?>
         <?= launchrock_submit(); ?>
     </body>
 </html>
