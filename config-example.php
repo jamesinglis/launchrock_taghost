@@ -8,7 +8,7 @@
  * This file is part of Launchrock TagHost.
  * 
  * @package launchrock_taghost
- * @version 0.3
+ * @version 0.4
  * @author James Inglis <hello@jamesinglis.no>
  * @copyright (c) 2015, James Inglis
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
@@ -28,6 +28,9 @@ $config['page']['description']                = ''; // This description is only 
 $config['page']['image']                      = ''; // This image is only used in the Open Graph tags
 $config['page']['bgcolor']                    = '#FFFFFF'; // To avoid a flash of white before loading the full screen widget
 $config['page']['color']                      = '#000000';
+
+$config['logging']['enabled']                 = false;
+$config['logging']['nonce']                   = 'enter secret phrase here';
 
 /**
  * Google Tag Manager configuration
